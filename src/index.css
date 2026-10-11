@@ -125,20 +125,7 @@
   .pillar-card:hover::after {
     opacity: 1;
   }
-  .pillar-card-1:hover {
-    transform: translateY(-4px);
-  }
-  @media (min-width: 768px) {
-    .pillar-card-2:hover {
-      transform: translateY(20px);
-    }
-  }
-  @media (max-width: 767px) {
-    .pillar-card-2:hover {
-      transform: translateY(-4px);
-    }
-  }
-  .pillar-card-3:hover {
+  .pillar-card:hover {
     transform: translateY(-4px);
   }
 }
@@ -199,17 +186,9 @@
   transform: translateY(24px);
   transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
 }
-.pillar-card-entry.pillar-card-2 {
-  transform: translateY(48px);
-}
 .pillar-card-entry.is-revealed {
   opacity: 1;
   transform: translateY(0);
-}
-@media (min-width: 768px) {
-  .pillar-card-entry.pillar-card-2.is-revealed {
-    transform: translateY(24px);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

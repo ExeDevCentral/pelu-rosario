@@ -14,7 +14,6 @@ interface PillarItem {
   footerRight: string
   detailFact: string
   cardClass: string
-  iconBoxClass: string
 }
 
 const PILLARS_DATA: PillarItem[] = [
@@ -28,7 +27,6 @@ const PILLARS_DATA: PillarItem[] = [
     footerRight: 'Oficio Genuino',
     detailFact: 'Mar a Sáb: 09:30 — 20:30 hs • Con o sin turno previo',
     cardClass: 'pillar-card-1',
-    iconBoxClass: 'pillar-icon-box-1',
   },
   {
     number: '02',
@@ -40,7 +38,6 @@ const PILLARS_DATA: PillarItem[] = [
     footerRight: 'Formulación Propia',
     detailFact: 'Fórmulas botánicas testeables en barra de experiencia',
     cardClass: 'pillar-card-2',
-    iconBoxClass: 'pillar-icon-box-2',
   },
   {
     number: '03',
@@ -52,7 +49,6 @@ const PILLARS_DATA: PillarItem[] = [
     footerRight: 'Turno con hora fija',
     detailFact: 'Canal oficial con confirmación automática en tiempo real',
     cardClass: 'pillar-card-3',
-    iconBoxClass: 'pillar-icon-box-3',
   },
 ]
 
@@ -110,11 +106,9 @@ const PillarCard: React.FC<PillarCardProps> = ({
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       style={{ transitionDelay: `${index * 90}ms` }}
-      className={`pillar-card pillar-card-entry ${item.cardClass} ${
-        isRevealed ? 'is-revealed' : ''
-      } ${
-        isMain ? 'p-9 lg:p-10' : 'p-7 lg:p-8'
-      } cursor-default overflow-hidden flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-[var(--gold)] focus-visible:outline-none`}
+      className={`pillar-card pillar-card-entry h-full flex flex-col justify-between overflow-hidden cursor-default focus-visible:ring-2 focus-visible:ring-[var(--gold)] focus-visible:outline-none p-[clamp(24px,2.5vw,40px)] ${
+        item.cardClass
+      } ${isRevealed ? 'is-revealed' : ''}`}
     >
       {/* 1. Spotlight radial fill layer */}
       <div className="pillar-card-spotlight" aria-hidden="true" />
@@ -122,21 +116,19 @@ const PillarCard: React.FC<PillarCardProps> = ({
       {/* 2. Spotlight 1px border glow layer */}
       <div className="pillar-card-border-glow" aria-hidden="true" />
 
-      {/* 3. Numeración editorial apagada de fondo (reemplaza píldora redundante) */}
+      {/* 3. Numeración editorial apagada de fondo (reducida, top-right exacto, sin desbordes) */}
       <span
         aria-hidden="true"
-        className="font-['Fraunces'] text-[6.5rem] lg:text-[7.5rem] font-bold leading-none select-none absolute top-1 right-4 text-[rgba(var(--gold-rgb),0.06)] pointer-events-none tracking-tighter"
+        className="font-['Fraunces'] text-[clamp(3.5rem,5vw,5rem)] font-bold leading-none select-none absolute top-3 right-5 text-[rgba(var(--gold-rgb),0.05)] pointer-events-none tracking-tight z-0"
       >
         {item.number}
       </span>
 
-      {/* 4. Cuerpo de la tarjeta */}
-      <div className="relative z-10">
+      {/* 4. Cuerpo de la tarjeta con padding-right reservado para no invadir el número */}
+      <div className="relative z-10 pr-14 sm:pr-16">
         {/* Cabecera: Caja de ícono con micro-interacción individual */}
         <div className="mb-6">
-          <div
-            className={`pillar-icon-box inline-flex p-3.5 rounded-xl bg-gradient-to-br from-[#2a1f14] via-[#1a130c] to-[#0c0906] border border-[var(--gold)]/40 text-[var(--gold)] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] transition-all duration-300`}
-          >
+          <div className="pillar-icon-box inline-flex p-3.5 rounded-xl bg-gradient-to-br from-[#2a1f14] via-[#1a130c] to-[#0c0906] border border-[var(--gold)]/40 text-[var(--gold)] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] transition-all duration-300">
             {item.icon(
               index === 0
                 ? 'pillar-icon-razor'
@@ -164,8 +156,8 @@ const PillarCard: React.FC<PillarCardProps> = ({
         </p>
       </div>
 
-      {/* 5. Footer a dos extremos (sin los 3 puntitos genéricos) + Revelado de detalle */}
-      <div className="relative z-10 mt-8 pt-4 border-t border-[rgba(var(--gold-rgb),0.18)]">
+      {/* 5. Footer alineado exactamente al fondo con margin-top: auto */}
+      <div className="relative z-10 mt-auto pt-6 border-t border-[rgba(var(--gold-rgb),0.18)]">
         <div className="flex items-center justify-between text-[11px] font-['Manrope']">
           <span className="text-[var(--paper)]/55 font-medium">
             {item.footerLeft}
@@ -236,16 +228,17 @@ const BrandPillars: React.FC = memo(() => {
           </span>
         </div>
 
-        {/* Grilla Asimétrica en Desktop: 1.4fr 1fr 1fr */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr] pillars-asymmetric-grid gap-6 lg:gap-8 items-start">
+        {/* Grilla Asimétrica en Desktop con items-stretch estricto */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr] pillars-asymmetric-grid gap-6 lg:gap-8 items-stretch">
           {PILLARS_DATA.map((item, idx) => (
-            <PillarCard
-              key={item.number}
-              item={item}
-              index={idx}
-              isMain={idx === 0}
-              isRevealed={isRevealed}
-            />
+            <div key={item.number} className="h-full">
+              <PillarCard
+                item={item}
+                index={idx}
+                isMain={idx === 0}
+                isRevealed={isRevealed}
+              />
+            </div>
           ))}
         </div>
       </div>
