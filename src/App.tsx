@@ -96,7 +96,7 @@ export default function App() {
     if (cart.length === 0) return
     const textLines = cart.map(i => `• ${i.name} x${i.qty} ($ ${i.price * i.qty})`)
     const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0)
-    const message = `💈 *PEDIDO BOUTIQUE CAPILAR - PELUQUERÍA BRIAN*\n\n${textLines.join('\n')}\n\n*Total Estimado:* $ ${total.toLocaleString('es-AR')}\n\nHola, me gustaría coordinar el retiro/envío de estos productos.`
+    const message = `💈 *PEDIDO BOUTIQUE CAPILAR - PELU ROSARIO*\n\n${textLines.join('\n')}\n\n*Total Estimado:* $ ${total.toLocaleString('es-AR')}\n\nHola, me gustaría coordinar el retiro/envío de estos productos.`
     window.open(`https://wa.me/5493410000000?text=${encodeURIComponent(message)}`, '_blank')
   }, [cart])
 

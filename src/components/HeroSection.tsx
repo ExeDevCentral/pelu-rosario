@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = memo(({ onNavigate }) => {
       {/* ── 1. BACKGROUND PHOTOGRAPHY (Authentic, illuminated, no foreign signs) ── */}
       <img
         src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop&q=85"
-        alt="Peluquería Brian — El Búho Dorado Barbería"
+        alt="Pelu Rosario — El Búho Dorado Barbería"
         fetchPriority="high"
         decoding="async"
         className="ken-burns absolute inset-0 w-full h-full pointer-events-none"

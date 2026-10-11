@@ -14,7 +14,7 @@ const LocationFooter: React.FC = memo(() => {
             </div>
             <div>
               <div className="font-['Playfair_Display'] text-lg font-bold text-[#f5ebd7] leading-tight">
-                PELUQUERÍA BRIAN
+                PELU ROSARIO
               </div>
               <div className="text-[9px] tracking-[0.2em] text-[#d4af67] uppercase font-bold">
                 El Búho Dorado • Est. 1947
@@ -63,7 +63,7 @@ const LocationFooter: React.FC = memo(() => {
             </p>
             <p className="flex items-center gap-2">
               <span className="font-bold text-[#d4af67]">•</span>
-              <span>contacto@peluqueriabrian.com.ar</span>
+              <span>contacto@pelurosario.com.ar</span>
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const LocationFooter: React.FC = memo(() => {
           </h4>
           <div className="w-full h-32 rounded-lg bg-[#14110d] border border-[#d4af67]/20 overflow-hidden relative group">
             <iframe
-              title="Ubicación Peluquería Brian"
+              title="Ubicación Pelu Rosario"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.1!2d-60.64!3d-32.94!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU2JzI0LjAiUyA2MMKwMzgnMjQuMCJX!5e0!3m2!1ses!2sar!4v1600000000000!5m2!1ses!2sar"
               className="w-full h-full border-0 opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none"
               loading="lazy"
@@ -87,7 +87,7 @@ const LocationFooter: React.FC = memo(() => {
 
       <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-[#d4af67]/15 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#a89b88]">
         <div>
-          © {new Date().getFullYear()} Peluquería Brian • El Búho Dorado Barbería Boutique. Todos los derechos reservados.
+          © {new Date().getFullYear()} Pelu Rosario • El Búho Dorado Barbería Boutique. Todos los derechos reservados.
         </div>
         <div className="mt-2 sm:mt-0 flex gap-4">
           <span className="text-[#d4af67]">Rosario, Argentina</span>

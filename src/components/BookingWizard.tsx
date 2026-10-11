@@ -55,7 +55,7 @@ const BookingWizard: React.FC<BookingWizardProps> = memo(({
     setIsSubmitting(true)
 
     const voucherId = `PUB-${Math.floor(100000 + Math.random() * 900000)}`
-    const qrSeed = `PELUQUERIA-BRIAN-${voucherId}-${selectedDay.dateStr}-${selectedTime}`
+    const qrSeed = `PELU-ROSARIO-${voucherId}-${selectedDay.dateStr}-${selectedTime}`
 
     const newReservation: Reservation = {
       id: voucherId,
@@ -105,7 +105,7 @@ const BookingWizard: React.FC<BookingWizardProps> = memo(({
 
   const handleShareWhatsApp = () => {
     if (!createdVoucher) return
-    const text = `💈 Hola Peluquería Brian, reservé el turno ID: ${createdVoucher.id} para ${createdVoucher.serviceName} con ${createdVoucher.barberName} el día ${createdVoucher.dateDisplay} a las ${createdVoucher.time} hs. Nombre: ${createdVoucher.customerName}`
+    const text = `💈 Hola Pelu Rosario, reservé el turno ID: ${createdVoucher.id} para ${createdVoucher.serviceName} con ${createdVoucher.barberName} el día ${createdVoucher.dateDisplay} a las ${createdVoucher.time} hs. Nombre: ${createdVoucher.customerName}`
     const url = `https://wa.me/5493410000000?text=${encodeURIComponent(text)}`
     window.open(url, '_blank')
   }

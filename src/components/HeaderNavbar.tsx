@@ -37,7 +37,7 @@ const HeaderNavbar: React.FC<HeaderNavbarProps> = memo(({
           </div>
           <div>
             <div className="font-['Playfair_Display'] text-lg sm:text-xl font-bold tracking-wide text-[#f5ebd7] group-hover:text-[#d4af67] transition-colors leading-tight">
-              PELUQUERÍA BRIAN
+              PELU ROSARIO
             </div>
             <div className="text-[9px] tracking-[0.25em] text-[#d4af67] uppercase font-bold">
               El Búho Dorado • Rosario 1947
