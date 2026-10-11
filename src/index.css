@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=Manrope:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --gold: #c9a86a;
+  --gold-soft: #e2c992;
+  --gold-rgb: 201, 168, 106;
+  --ink: #0a0806;
+  --paper: #f5eee1;
+  --radius-card: 18px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+
+@theme {
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: var(--font-body);
+}
+
+.fluid-pad {
+  padding-inline: clamp(24px, 5vw, 96px);
+}
+
+@keyframes kenBurnsSubtle {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ken-burns {
+  animation: kenBurnsSubtle 14s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns {
+    animation: none;
+    transform: scale(1);
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   PILARES DE LA CASA: ASYMMETRIC GRID & SPOTLIGHT ARCHITECTURE
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .pillars-asymmetric-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+.pillar-card {
+  --mx: -999px;
+  --my: -999px;
+  position: relative;
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, #18130e 0%, #120e0a 55%, #090705 100%);
+  border: 1px solid rgba(var(--gold-rgb), 0.22);
+  transition: transform 350ms var(--ease-out), border-color 300ms ease;
+  will-change: transform;
+}
+
+.pillar-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.75), 0 0 24px rgba(var(--gold-rgb), 0.12);
+  opacity: 0;
+  transition: opacity 350ms var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pillar-card-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: radial-gradient(420px circle at var(--mx) var(--my), rgba(var(--gold-rgb), 0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pillar-card-border-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-card);
+  padding: 1px;
+  background: radial-gradient(380px circle at var(--mx) var(--my), rgba(var(--gold-rgb), 0.55), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pillar-card:hover .pillar-card-spotlight,
+  .pillar-card:hover .pillar-card-border-glow {
+    opacity: 1;
+  }
+  .pillar-card:hover::after {
+    opacity: 1;
+  }
+  .pillar-card-1:hover {
+    transform: translateY(-4px);
+  }
+  @media (min-width: 768px) {
+    .pillar-card-2:hover {
+      transform: translateY(20px);
+    }
+  }
+  @media (max-width: 767px) {
+    .pillar-card-2:hover {
+      transform: translateY(-4px);
+    }
+  }
+  .pillar-card-3:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.pillar-card-1:hover .pillar-icon-razor {
+  transform: rotate(-8deg);
+  transition: transform 400ms var(--ease-out-back);
+}
+.pillar-icon-razor {
+  transition: transform 300ms var(--ease-out);
+}
+
+.pillar-card-2:hover .pillar-icon-pot {
+  transform: translateY(-2px);
+  color: var(--gold-soft);
+  filter: drop-shadow(0 2px 8px rgba(var(--gold-rgb), 0.5));
+}
+.pillar-icon-pot {
+  color: var(--gold);
+  transition: transform 300ms var(--ease-out), color 300ms ease, filter 300ms ease;
+}
+
+@keyframes clockDialPulse {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(18deg); }
+  100% { transform: rotate(0deg); }
+}
+.pillar-card-3:hover .pillar-icon-clock {
+  animation: clockDialPulse 600ms var(--ease-out);
+}
+
+.pillar-card:hover .pillar-icon-box {
+  border-color: var(--gold);
+  box-shadow: inset 0 0 12px rgba(var(--gold-rgb), 0.22);
+}
+
+.pillar-detail-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out);
+}
+.pillar-card:hover .pillar-detail-drawer,
+.pillar-card:focus-within .pillar-detail-drawer {
+  grid-template-rows: 1fr;
+}
+.pillar-detail-inner {
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 260ms ease 60ms;
+}
+.pillar-card:hover .pillar-detail-inner,
+.pillar-card:focus-within .pillar-detail-inner {
+  opacity: 1;
+}
+
+.pillar-card-entry {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.pillar-card-entry.pillar-card-2 {
+  transform: translateY(48px);
+}
+.pillar-card-entry.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (min-width: 768px) {
+  .pillar-card-entry.pillar-card-2.is-revealed {
+    transform: translateY(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card,
+  .pillar-card-1:hover,
+  .pillar-card-2:hover,
+  .pillar-card-3:hover,
+  .pillar-card-entry,
+  .pillar-card-entry.is-revealed {
+    transform: none !important;
+    transition: opacity 200ms ease, border-color 200ms ease !important;
+    opacity: 1 !important;
+  }
+  .pillar-icon-razor,
+  .pillar-icon-pot,
+  .pillar-icon-clock {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--paper);
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0b08;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 148, 58, 0.3);
+  border-radius: 2px;
+}
+
+input::placeholder {
+  color: rgba(107, 89, 64, 0.6);
+}
+
+input:focus {
+  outline: none;
+}
+
+/* ── HOVER REVEAL CARDS STYLES & ANIMATIONS ── */
+
+.reveal-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #161210;
+  border: 1px solid rgba(196, 148, 58, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.reveal-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide Up Overlay */
+.reveal-overlay-slide {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 11, 8, 0.95) 0%, rgba(13, 11, 8, 0.75) 50%, rgba(13, 11, 8, 0.1) 100%);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fade Content inside Overlay */
+.reveal-content-stagger > * {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Shimmer Pass Effect */
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(242, 230, 204, 0.25), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+/* Hover effects only exist on devices with a hover pointer (mouse/trackpad).
+   On touch screens :hover never clears, so these rules would "stick". */
+@media (hover: hover) {
+  .reveal-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(196, 148, 58, 0.7);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(196, 148, 58, 0.15);
+  }
+
+  .reveal-card:hover .reveal-card-img {
+    transform: scale(1.12);
+    filter: brightness(0.75) contrast(1.1);
+  }
+
+  .reveal-card:hover .reveal-overlay-slide {
+    transform: translateY(0%);
+  }
+
+  .reveal-card:hover .reveal-content-stagger > *:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .reveal-card:hover .reveal-content-stagger > *:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.18s;
+  }
+
+  .reveal-card:hover .reveal-content-stagger > *:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
+  }
+
+  .reveal-card:hover .reveal-content-stagger > *:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.32s;
+  }
+
+  .reveal-card:hover .shimmer-effect {
+    left: 150%;
+  }
+
+  /* Product catalog: hover zoom + buy button hover, mouse only */
+  .prod-img-zoom:hover {
+    transform: scale(1.08);
+  }
+
+  .btn-buy:hover {
+    background: #c4943a;
+    color: #1a0e00;
+  }
+}
+
+/* Touch devices (phones/tablets): keep the card content visible — no hover
+   needed. The overlay stays partially revealed with a lighter gradient. */
+@media (hover: none) {
+  .reveal-card-img {
+    filter: brightness(0.82) contrast(1.05);
+  }
+
+  .reveal-overlay-slide {
+    transform: translateY(0%);
+    background: linear-gradient(to top, rgba(13, 11, 8, 0.97) 0%, rgba(13, 11, 8, 0.8) 45%, rgba(13, 11, 8, 0.25) 100%);
+  }
+
+  .reveal-content-stagger > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .shimmer-effect {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE RESPONSIVE OPTIMIZATIONS ── */
+
+/* Touch-friendly tap targets */
+button {
+  touch-action: manipulation;
+}
+
+/* Collapse multi-column grids & flex rows to a single column on small screens */
+@media (max-width: 900px) {
+  .mob-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mob-hide {
+    display: none !important;
+  }
+
+  .mob-nav-toggle {
+    display: flex !important;
+  }
+
+  .mob-cta-bar {
+    display: flex !important;
+  }
+
+  .mob-menu-open {
+    display: block !important;
+  }
+
+  /* Reduce section padding for narrow viewports */
+  .app-section {
+    padding: 4rem 1.25rem !important;
+  }
+
+  nav {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Hero: tighten spacing */
+  .hero-inner {
+    padding: 0 1.5rem 4rem !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 11vw, 4rem) !important;
+  }
+
+  /* Booking wizard internal padding */
+  .wizard-body {
+    padding: 2rem 1.25rem !important;
+  }
+
+  /* Reserve space so the sticky bottom CTA never covers content */
+  body {
+    padding-bottom: 5.5rem !important;
+  }
+
+  /* Time slot grid: 3 columns instead of 4 on mobile */
+  .slots-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Haircut catalog: single column on small screens */
+  .styles-grid {
+    max-height: none !important;
+  }
+
+  /* Product grid: 2 columns on tablet */
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Product grid: 1 column on phones, 2 on tablets, 3 on desktop */
+@media (max-width: 639px) {
+  .prod-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 1101px) {
+  .prod-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .mob-nav-toggle,
+  .mob-cta-bar {
+    display: none !important;
+  }
+
+  .mob-menu {
+    display: none !important;
+  }
+}
+
+/* Hide scrollbars for chrome, safari and opera in horizontal touch pickers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area padding for iPhones with notch/home indicator bar */
+.pb-safe {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+.bottom-cta-safe {
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+}
+
+/* Touch-friendly tap targets */
+button, input, select, a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Performance: avoid rendering below-fold heavy sections until needed */
+.cvis {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
