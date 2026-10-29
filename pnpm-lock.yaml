@@ -38,7 +38,7 @@ importers:
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.0.0
-        version: 4.2.2(vite@8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1))
+        version: 4.2.2(vite@8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1))
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
@@ -46,8 +46,8 @@ importers:
         specifier: ^5.0.6
         version: 5.0.6
       '@types/node':
-        specifier: ^22.19.17
-        version: 22.19.17
+        specifier: ^26.6.5
+        version: 26.6.5
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.14
@@ -56,7 +56,7 @@ importers:
         version: 19.2.3(@types/react@19.2.14)
       '@vitejs/plugin-react':
         specifier: ^6.0.0
-        version: 6.0.1(vite@8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1))
+        version: 6.0.1(vite@8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1))
       oxfmt:
         specifier: ^0.2.0
         version: 0.2.0
@@ -71,7 +71,7 @@ importers:
         version: 5.9.3
       vite:
         specifier: ^8.0.0
-        version: 8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1)
+        version: 8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1)
 
 packages:
 
@@ -554,6 +554,9 @@ packages:
 
   '@types/node@22.19.17':
     resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
+
+  '@types/node@26.6.5':
+    resolution: {integrity: sha512-uMzsv9stDdofIZBx4UGh4Z9ZgXnGC9seRDscilBcTHAeOFk67MZg/k9bWVfO+bk4qZmG+l52hRnLwUiH2LnJTg==}
 
   '@types/qs@6.15.1':
     resolution: {integrity: sha512-GZHUBZR9hckSUhrxmp1nG6NwdpM9fCunJwyThLW1X3AyHgd9IlHb6VANpQQqDr2o/qQp6McZ3y/IA2rVzKzSbw==}
@@ -1083,6 +1086,9 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
+  undici-types@8.9.0:
+    resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
+
   unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
@@ -1431,12 +1437,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.2.2
       '@tailwindcss/oxide-win32-x64-msvc': 4.2.2
 
-  '@tailwindcss/vite@4.2.2(vite@8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1))':
+  '@tailwindcss/vite@4.2.2(vite@8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1))':
     dependencies:
       '@tailwindcss/node': 4.2.2
       '@tailwindcss/oxide': 4.2.2
       tailwindcss: 4.2.2
-      vite: 8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1)
+      vite: 8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1)
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -1454,7 +1460,7 @@ snapshots:
 
   '@types/cors@2.8.19':
     dependencies:
-      '@types/node': 22.19.17
+      '@types/node': 26.6.5
 
   '@types/express-serve-static-core@5.1.2':
     dependencies:
@@ -1474,6 +1480,10 @@ snapshots:
   '@types/node@22.19.17':
     dependencies:
       undici-types: 6.21.0
+
+  '@types/node@26.6.5':
+    dependencies:
+      undici-types: 8.9.0
 
   '@types/qs@6.15.1': {}
 
@@ -1496,10 +1506,10 @@ snapshots:
       '@types/http-errors': 2.0.5
       '@types/node': 22.19.17
 
-  '@vitejs/plugin-react@6.0.1(vite@8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1))':
+  '@vitejs/plugin-react@6.0.1(vite@8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.7
-      vite: 8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1)
+      vite: 8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1)
 
   accepts@2.0.0:
     dependencies:
@@ -2005,11 +2015,13 @@ snapshots:
 
   undici-types@6.21.0: {}
 
+  undici-types@8.9.0: {}
+
   unpipe@1.0.0: {}
 
   vary@1.1.2: {}
 
-  vite@8.0.3(@types/node@22.19.17)(jiti@2.6.1)(tsx@4.23.1):
+  vite@8.0.3(@types/node@26.6.5)(jiti@2.6.1)(tsx@4.23.1):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -2017,7 +2029,7 @@ snapshots:
       rolldown: 1.0.0-rc.12
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 22.19.17
+      '@types/node': 26.6.5
       fsevents: 2.3.3
       jiti: 2.6.1
       tsx: 4.23.1
