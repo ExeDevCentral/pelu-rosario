@@ -4,18 +4,14 @@ import React, { useState, useCallback } from 'react'
 import HeaderNavbar from './components/HeaderNavbar'
 import HeroSection from './components/HeroSection'
 import BrandPillars from './components/BrandPillars'
-import HaircutCatalog from './components/HaircutCatalog'
-import AiVisagismoModal from './components/AiVisagismoModal'
-import ServicesSection from './components/ServicesSection'
+import ExperienceHub, { ExperienceTab } from './components/ExperienceHub'
 import BookingWizard from './components/BookingWizard'
-import ProductBoutique from './components/ProductBoutique'
+import CommunityHub, { CommunityTab } from './components/CommunityHub'
 import CartDrawer from './components/CartDrawer'
-import TeamSection from './components/TeamSection'
-import TestimonialsSection from './components/TestimonialsSection'
-import FaqSection from './components/FaqSection'
 import LocationFooter from './components/LocationFooter'
 import ToastNotification from './components/ToastNotification'
 import AdminPanel from './components/AdminPanel'
+import CustomScrollbar from './components/CustomScrollbar'
 
 // Custom Icons
 import { LuxuryBagIcon, CalendarClockIcon } from './components/icons/CustomIcons'
@@ -43,6 +39,10 @@ export default function App() {
   // AI Visagismo Initial Style state
   const [aiInitialStyleId, setAiInitialStyleId] = useState<HairId>('pompadour')
 
+  // Compact Hub Tabs
+  const [experienceTab, setExperienceTab] = useState<ExperienceTab>('catalog')
+  const [communityTab, setCommunityTab] = useState<CommunityTab>('team')
+
   // Toast System
   const [toasts, setToasts] = useState<Toast[]>([])
 
@@ -58,12 +58,23 @@ export default function App() {
     setToasts(prev => prev.filter(t => t.id !== id))
   }, [])
 
-  // Navigation Handler
+  // Navigation Handler (auto-switches Hub tabs when targeting catalog/services/products/visagismo/team)
   const handleNavigate = useCallback((sectionId: string) => {
-    const el = document.getElementById(sectionId)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
+    let targetId = sectionId
+    if (sectionId === 'catalog' || sectionId === 'services' || sectionId === 'products' || sectionId === 'visagismo') {
+      setExperienceTab(sectionId)
+      targetId = 'experience'
+    } else if (sectionId === 'team' || sectionId === 'testimonials' || sectionId === 'faq') {
+      setCommunityTab(sectionId)
+      targetId = 'community'
     }
+
+    requestAnimationFrame(() => {
+      const el = document.getElementById(targetId)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    })
   }, [])
 
   // Cart Operations
@@ -169,25 +180,23 @@ export default function App() {
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections (Concentrated Hub Architecture) */}
       <main>
         <HeroSection onNavigate={handleNavigate} />
         
         <BrandPillars />
 
-        <HaircutCatalog
+        <ExperienceHub
+          activeTab={experienceTab}
+          onTabChange={setExperienceTab}
           onSelectStyle={handleSelectStyleFromCatalog}
           onTryStyleOnAi={handleTryStyleOnAi}
-        />
-
-        <AiVisagismoModal
-          initialStyleId={aiInitialStyleId}
-          onBookWithStyle={handleBookWithStyle}
+          onSelectService={handleSelectServiceFromMenu}
           onAddToCart={handleAddToCart}
+          aiInitialStyleId={aiInitialStyleId}
+          onBookWithStyle={handleBookWithStyle}
           onAddToast={addToast}
         />
-
-        <ServicesSection onSelectService={handleSelectServiceFromMenu} />
 
         <BookingWizard
           preselectedService={selectedService}
@@ -197,13 +206,10 @@ export default function App() {
           onAddToast={addToast}
         />
 
-        <ProductBoutique onAddToCart={handleAddToCart} />
-
-        <TeamSection />
-
-        <TestimonialsSection />
-
-        <FaqSection />
+        <CommunityHub
+          activeTab={communityTab}
+          onTabChange={setCommunityTab}
+        />
       </main>
 
       {/* Footer */}
@@ -226,6 +232,9 @@ export default function App() {
           onAddToast={addToast}
         />
       )}
+
+      {/* Floating Auto-Hide Scrollbar */}
+      <CustomScrollbar />
 
       {/* Toast Notifications System */}
       <ToastNotification toasts={toasts} onRemove={removeToast} />

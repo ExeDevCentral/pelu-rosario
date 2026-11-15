@@ -2,14 +2,17 @@ import React, { useState, memo } from 'react'
 import { HAIR_PRODUCTS, fmt } from '../data/mockData'
 import { HairProduct } from '../types'
 import { PomadePotIcon, LuxuryBagIcon } from './icons/CustomIcons'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 interface ProductBoutiqueProps {
+  embedded?: boolean
   onAddToCart: (product: HairProduct) => void
 }
 
-const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ onAddToCart }) => {
+const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ embedded = false, onAddToCart }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('TODOS')
   const [searchQuery, setSearchQuery] = useState<string>('')
+  const { ref, isVisible } = useRevealOnScroll<HTMLDivElement>(0.08)
 
   const categories = ['TODOS', 'Cremas & Pomadas', 'Geles', 'Ceras', 'Aceites & Bálsamos']
 
@@ -19,11 +22,9 @@ const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ onAddToCart }) =
     return matchesCategory && matchesSearch
   })
 
-  return (
-    <section id="products" className="py-24 bg-[#070605] border-t border-[#d4af67]/20 relative cvis">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Header */}
+  const content = (
+    <>
+      {!embedded && (
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#16120e] border border-[#d4af67]/30 text-xs font-black text-[#d4af67] uppercase tracking-widest mb-3">
             <PomadePotIcon size={16} />
@@ -36,6 +37,7 @@ const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ onAddToCart }) =
             Formulaciones artesanales de autor para el peinado y nutrición capilar diaria en Rosario. Retirá en local de calle Urquiza o coordiná entrega a domicilio.
           </p>
         </div>
+      )}
 
         {/* Filter Tabs & Search Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 max-w-4xl mx-auto">
@@ -72,19 +74,21 @@ const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ onAddToCart }) =
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((prod) => (
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.map((prod, idx) => (
             <div
               key={prod.id}
-              className="bg-[#12100d] rounded-xl border border-[#d4af67]/20 hover:border-[#d4af67]/60 transition-all flex flex-col justify-between overflow-hidden group shadow-xl"
+              style={{ transitionDelay: `${idx * 65}ms` }}
+              className={`reveal-on-scroll ${isVisible ? 'is-visible' : ''} bg-[var(--surface-30)] rounded-xl border border-[rgba(var(--accent-10-rgb),0.2)] hover:border-[var(--accent-10)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group shadow-xl`}
             >
               {/* Product Image */}
-              <div className="relative h-64 overflow-hidden bg-[#18140f]">
+              <div className="relative h-64 overflow-hidden bg-[var(--surface-30-elevated)]">
                 <img
                   src={prod.image}
                   alt={prod.name}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  decoding="async"
+                  className="w-full h-full object-cover img-hd group-hover:scale-108 transition-transform duration-500"
                 />
                 <span className="absolute top-3 right-3 bg-[#0a0907]/90 backdrop-blur-md border border-[#d4af67]/40 text-[#d4af67] text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">
                   {prod.category}
@@ -133,8 +137,14 @@ const ProductBoutique: React.FC<ProductBoutiqueProps> = memo(({ onAddToCart }) =
             </div>
           ))}
         </div>
+    </>
+  )
 
-      </div>
+  if (embedded) return content
+
+  return (
+    <section id="products" className="py-24 bg-[var(--bg-60)] border-t border-[rgba(var(--accent-10-rgb),0.2)] relative cvis">
+      <div className="max-w-7xl mx-auto px-6">{content}</div>
     </section>
   )
 })

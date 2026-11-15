@@ -111,7 +111,7 @@ const BookingWizard: React.FC<BookingWizardProps> = memo(({
   }
 
   return (
-    <section id="booking" className="py-24 bg-[#161210] border-t border-[#c4943a]/20">
+    <section id="booking" className="py-14 bg-[var(--surface-30)] border-t border-white/10">
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Header */}

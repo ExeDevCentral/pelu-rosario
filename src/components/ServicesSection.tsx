@@ -3,15 +3,14 @@ import { SERVICES, fmt } from '../data/mockData'
 import { Service } from '../types'
 
 interface ServicesSectionProps {
+  embedded?: boolean
   onSelectService: (service: Service) => void
 }
 
-const ServicesSection: React.FC<ServicesSectionProps> = memo(({ onSelectService }) => {
-  return (
-    <section id="services" className="py-24 bg-[#0d0b08] relative cvis">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Header */}
+const ServicesSection: React.FC<ServicesSectionProps> = memo(({ embedded = false, onSelectService }) => {
+  const content = (
+    <>
+      {!embedded && (
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-extrabold tracking-[0.25em] text-[#c4943a] uppercase mb-3">
             RITUALES & CUIDADO PERSONAL
@@ -23,9 +22,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = memo(({ onSelectService 
             Cada servicio incluye bebida de cortesía (café expreso o cerveza artesanal), asesoría de visagismo y aplicación de productos premium.
           </p>
         </div>
+      )}
 
-        {/* Services Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Services Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SERVICES.map((srv) => {
             const deposit = srv.price * srv.depositPct
 
@@ -85,8 +85,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = memo(({ onSelectService 
             )
           })}
         </div>
+    </>
+  )
 
-      </div>
+  if (embedded) return content
+
+  return (
+    <section id="services" className="py-24 bg-[#0d0b08] relative cvis">
+      <div className="max-w-7xl mx-auto px-6">{content}</div>
     </section>
   )
 })

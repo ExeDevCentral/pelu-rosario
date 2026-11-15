@@ -16,17 +16,19 @@ const HeroSection: React.FC<HeroSectionProps> = memo(({ onNavigate }) => {
         gridTemplateRows: '1fr auto',
       }}
     >
-      {/* ── 1. BACKGROUND PHOTOGRAPHY (Authentic, illuminated, no foreign signs) ── */}
+      {/* ── 1. BACKGROUND PHOTOGRAPHY (Authentic, illuminated, high-DPI crisp) ── */}
       <img
-        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop&q=85"
+        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop&auto=format&q=90"
+        srcSet="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1280&h=720&fit=crop&auto=format&q=85 1280w, https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&h=1080&fit=crop&auto=format&q=90 1920w, https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=2560&h=1440&fit=crop&auto=format&q=90 2560w"
+        sizes="100vw"
         alt="Pelu Rosario — El Búho Dorado Barbería"
         fetchPriority="high"
         decoding="async"
-        className="ken-burns absolute inset-0 w-full h-full pointer-events-none"
+        className="ken-burns img-hd absolute inset-0 w-full h-full pointer-events-none"
         style={{
           objectFit: 'cover',
           objectPosition: '70% center',
-          filter: 'brightness(1.15) contrast(1.05) saturate(0.9)',
+          filter: 'brightness(1.12) contrast(1.06) saturate(0.95)',
         }}
       />
 
@@ -53,7 +55,7 @@ const HeroSection: React.FC<HeroSectionProps> = memo(({ onNavigate }) => {
           paddingBottom: 'clamp(48px, 8vh, 120px)',
         }}
       >
-        <div className="space-y-6">
+        <div className="space-y-6 hero-stagger">
           
           {/* Eyebrow Label with 48px Decorative Line */}
           <div className="flex items-center gap-4">
@@ -121,52 +123,48 @@ const HeroSection: React.FC<HeroSectionProps> = memo(({ onNavigate }) => {
             Descubrí tu corte ideal con nuestro Asesor de Visagismo Inteligente, reservá tu turno para hoy o esta semana y adquirí los mejores geles y pomadas.
           </p>
 
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1 max-w-xl">
+          {/* Action CTAs — Refined, proportioned, metallic bevel */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1 max-w-lg">
             <button
               onClick={() => onNavigate('booking')}
-              className="flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-xl shadow-black/40"
+              className="flex items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 cursor-pointer"
               style={{
                 fontFamily: 'var(--font-body)',
-                fontWeight: 600,
-                fontSize: '0.78rem',
-                letterSpacing: '0.18em',
+                fontWeight: 700,
+                fontSize: '0.7rem',
+                letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                backgroundColor: 'var(--gold)',
-                color: 'var(--ink)',
-                padding: '1rem 2rem',
-                borderRadius: 4,
-                border: 'none',
+                background: 'linear-gradient(135deg, #e5c682 0%, #c69d4b 100%)',
+                color: '#0b0b0c',
+                padding: '0.78rem 1.45rem',
+                borderRadius: 6,
+                border: '1px solid rgba(255, 255, 255, 0.22)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 0, 0, 0.45)',
               }}
             >
-              <CalendarClockIcon size={16} />
-              <span>Reservar Turno en Rosario</span>
+              <CalendarClockIcon size={14} />
+              <span>Reservar Turno</span>
             </button>
             
             <button
               onClick={() => onNavigate('visagismo')}
-              className="flex items-center justify-center gap-2.5 transition-all cursor-pointer backdrop-blur-sm"
+              className="flex items-center justify-center gap-2 transition-all duration-200 hover:border-[var(--gold)] hover:bg-white/[0.07] cursor-pointer backdrop-blur-md"
               style={{
                 fontFamily: 'var(--font-body)',
                 fontWeight: 600,
-                fontSize: '0.78rem',
-                letterSpacing: '0.18em',
+                fontSize: '0.7rem',
+                letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                backgroundColor: 'transparent',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 color: 'var(--paper)',
-                border: '1px solid var(--gold)',
-                padding: '1rem 2rem',
-                borderRadius: 4,
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = 'rgba(201, 168, 106, 0.15)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = 'transparent'
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                padding: '0.78rem 1.45rem',
+                borderRadius: 6,
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06)',
               }}
             >
-              <AiDiagnosticIcon size={16} color="var(--gold)" />
-              <span>Probador de Corte (IA)</span>
+              <AiDiagnosticIcon size={14} color="var(--gold)" />
+              <span>Probador IA</span>
             </button>
           </div>
 

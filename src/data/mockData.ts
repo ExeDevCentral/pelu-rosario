@@ -1,16 +1,16 @@
 import { HairStyle, SampleFace, Service, Barber, HairProduct, FaqItem, Testimonial } from '../types'
 
 export const T = {
-  noir: '#0d0b08',
-  card: '#1a1410',
-  card2: '#161210',
-  cream: '#f2e6cc',
-  creamMuted: 'rgba(242,230,204,0.72)',
-  brass: '#c4943a',
-  brassLight: '#e5b657',
-  muted: '#6b5940',
-  border: 'rgba(196,148,58,0.2)',
-  goldGrad: 'linear-gradient(135deg, #c4943a 0%, #d4a84a 50%, #a87830 100%)',
+  noir: '#0a0806',
+  card: '#16120e',
+  card2: '#1f1914',
+  cream: '#f5eee1',
+  creamMuted: 'rgba(245,238,225,0.72)',
+  brass: '#d4af67',
+  brassLight: '#ead098',
+  muted: '#b5a792',
+  border: 'rgba(212,175,103,0.2)',
+  goldGrad: 'linear-gradient(135deg, #d4af67 0%, #ead098 50%, #b8914f 100%)',
   greenSuccess: '#25d366',
 }
 
@@ -94,25 +94,25 @@ export const SAMPLE_FACES: SampleFace[] = [
     id: 'face_1',
     label: 'Rostro Ovalado',
     shape: 'Ovalado',
-    url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=faces&q=80',
+    url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=faces&auto=format&q=90',
   },
   {
     id: 'face_2',
     label: 'Rostro Cuadrado',
     shape: 'Cuadrado',
-    url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=750&fit=crop&crop=faces&q=80',
+    url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1000&fit=crop&crop=faces&auto=format&q=90',
   },
   {
     id: 'face_3',
     label: 'Rostro Redondo',
     shape: 'Redondo',
-    url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=750&fit=crop&crop=faces&q=80',
+    url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&crop=faces&auto=format&q=90',
   },
   {
     id: 'face_4',
     label: 'Rostro Diamante',
     shape: 'Diamante',
-    url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=750&fit=crop&crop=faces&q=80',
+    url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop&crop=faces&auto=format&q=90',
   },
 ]
 
@@ -158,28 +158,28 @@ export const BARBERS: Barber[] = [
     id: 'carlos',
     name: 'Don Carlos Méndez',
     specialty: 'CORTES CLÁSICOS & NAVAJA',
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=600&fit=crop&crop=faces&auto=format&q=90',
     rating: 5.0,
   },
   {
     id: 'facundo',
     name: 'Facundo Reyes',
     specialty: 'FADE MODERNO & TEXTURAS',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1598524374668-5d565a3c42e8?w=600&h=600&fit=crop&crop=faces&auto=format&q=90',
     rating: 4.9,
   },
   {
     id: 'marcelo',
     name: 'Marcelo Giordano',
     specialty: 'POMPADOUR & ESCULTURA DE BARBA',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=faces&auto=format&q=90',
     rating: 4.9,
   },
   {
     id: 'any',
     name: 'Primer Barbero Disponible',
     specialty: 'ASIGNACIÓN RÁPIDA DE TURNO',
-    avatar: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=300&h=300&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&h=600&fit=crop&crop=faces&auto=format&q=90',
     rating: 5.0,
   },
 ]
@@ -193,7 +193,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Alta (5/5)',
     shine: 'Medio Noble',
     price: 3200,
-    image: 'https://images.unsplash.com/photo-1775126250999-806ca8419dcb?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1775126250999-806ca8419dcb?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'gel_extra_forte',
@@ -203,7 +203,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Extrema (5/5)',
     shine: 'Brillo Espejo',
     price: 2900,
-    image: 'https://images.unsplash.com/photo-1775126251074-cd5f4cfdf7c9?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1775126251074-cd5f4cfdf7c9?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'cera_mate',
@@ -213,7 +213,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Media-Alta (4/5)',
     shine: 'Mate Total (0/5)',
     price: 2700,
-    image: 'https://images.unsplash.com/photo-1638383257225-f810a62c634e?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1638383257225-f810a62c634e?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'crema_peinar',
@@ -223,7 +223,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Media Flexible (3/5)',
     shine: 'Brillo Tradicional',
     price: 2800,
-    image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1672761431773-a4d77e8ca1d7?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'aceite_imperial',
@@ -233,7 +233,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Nutrición / Ligero',
     shine: 'Luminosidad Natural',
     price: 3800,
-    image: 'https://images.unsplash.com/photo-1776843448493-eb35a803489b?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1776843448493-eb35a803489b?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'gel_fluido',
@@ -243,7 +243,7 @@ export const HAIR_PRODUCTS: HairProduct[] = [
     hold: 'Media (3/5)',
     shine: 'Satinado',
     price: 2500,
-    image: 'https://images.unsplash.com/photo-1638383257653-4217e9161b11?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1638383257653-4217e9161b11?w=800&h=960&fit=crop&auto=format&q=90',
   },
 ]
 
@@ -302,7 +302,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Cliente habitual',
     text: 'Atención impecable. Don Carlos es un maestro con la navaja y el ambiente retro con toallas calientes es de otro nivel. Totalmente recomendado.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&h=240&fit=crop&crop=faces&auto=format&q=90',
     tag: 'TURNO VERIFICADO',
   },
   {
@@ -311,7 +311,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Empresario',
     text: 'Me hago el corte Fade con Facundo cada dos semanas. La puntualidad y la precisión son imbatibles. Los productos para el cabello son excelentes.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=240&h=240&fit=crop&crop=faces&auto=format&q=90',
     tag: 'COMPRA VERIFICADA',
   },
   {
@@ -320,7 +320,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Diseñador UX',
     text: 'La experiencia web para sacar turno y el probador con IA me volaron la cabeza. Llegué, el turno estaba listo y la cerveza de cortesía un 10.',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&h=120&fit=crop&crop=faces',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=240&h=240&fit=crop&crop=faces&auto=format&q=90',
     tag: 'TURNO VERIFICADO',
   },
 ]

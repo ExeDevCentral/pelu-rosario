@@ -155,7 +155,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Alta (5/5)',
     shine: 'Medio Noble',
     description: 'Fijación máxima a base de agua sin residuos. Aporta estructura limpia a copetes Pompadour y Undercut.',
-    image: 'https://images.unsplash.com/photo-1775126250999-806ca8419dcb?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1775126250999-806ca8419dcb?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'gel_extra_forte',
@@ -168,7 +168,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Extrema (5/5)',
     shine: 'Brillo Espejo',
     description: 'Gel concentrado con pro-vitamina B5. Brinda fijación blindada todo el día con acabado brillante espejo.',
-    image: 'https://images.unsplash.com/photo-1775126251074-cd5f4cfdf7c9?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1775126251074-cd5f4cfdf7c9?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'cera_mate',
@@ -181,7 +181,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Media-Alta (4/5)',
     shine: 'Mate Total (0/5)',
     description: 'Acabado 100% mate sin sensación grasosa. Aporta volumen natural y textura remoldeable para Quiff y Fade.',
-    image: 'https://images.unsplash.com/photo-1638383257225-f810a62c634e?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1638383257225-f810a62c634e?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'crema_peinar',
@@ -194,7 +194,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Media Flexible (3/5)',
     shine: 'Brillo Tradicional',
     description: 'La fórmula original rosarina de 1947. Suaviza la fibra capilar, controla el frizz del río Paraná y facilita la raya lateral.',
-    image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1672761431773-a4d77e8ca1d7?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'aceite_imperial',
@@ -207,7 +207,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Nutrición / Ligero',
     shine: 'Luminosidad Natural',
     description: 'Blend botánico de argán, jojoba y madera de cedro. Nutre el cabello seco, aporta sedosidad y perfuma.',
-    image: 'https://images.unsplash.com/photo-1776843448493-eb35a803489b?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1776843448493-eb35a803489b?w=800&h=960&fit=crop&auto=format&q=90',
   },
   {
     id: 'gel_fluido',
@@ -220,7 +220,7 @@ const INITIAL_INVENTORY: InventoryItem[] = [
     hold: 'Media (3/5)',
     shine: 'Satinado',
     description: 'Gel ligero sin alcohol de secado rápido. Ideal para peinados casuales con movimiento y flexibilidad.',
-    image: 'https://images.unsplash.com/photo-1638383257653-4217e9161b11?w=400&h=480&fit=crop&auto=format',
+    image: 'https://images.unsplash.com/photo-1638383257653-4217e9161b11?w=800&h=960&fit=crop&auto=format&q=90',
   },
 ]
 

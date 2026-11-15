@@ -63,8 +63,8 @@ const HeaderNavbar: React.FC<HeaderNavbarProps> = memo(({
           <button onClick={() => onNavigate('team')} className="hover:text-[#d4af67] transition-colors cursor-pointer uppercase">
             Barberos
           </button>
-          <button onClick={() => onNavigate('booking')} className="px-4 py-2 rounded bg-[#d4af67] text-[#0b0a08] hover:bg-[#e8c98b] font-black transition-all cursor-pointer uppercase shadow-md">
-            Reservar Turno
+          <button onClick={() => onNavigate('booking')} className="px-3.5 py-1.5 rounded-md bg-gradient-to-b from-[#e3c47f] to-[#c79d4b] text-[#0b0b0c] hover:brightness-105 text-[11px] font-bold tracking-[0.12em] border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)] transition-all cursor-pointer uppercase">
+            Reservar
           </button>
         </div>
 

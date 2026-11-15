@@ -1,12 +1,10 @@
 import React, { memo } from 'react'
 import { TESTIMONIALS } from '../data/mockData'
 
-const TestimonialsSection: React.FC = memo(() => {
-  return (
-    <section className="py-24 bg-[#0d0b08] border-t border-[#c4943a]/20 relative cvis">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Header */}
+const TestimonialsSection: React.FC<{ embedded?: boolean }> = memo(({ embedded = false }) => {
+  const content = (
+    <>
+      {!embedded && (
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-extrabold tracking-[0.25em] text-[#c4943a] uppercase mb-3">
             RESEÑAS REALES DE GOOGLE & WHATSAPP
@@ -15,9 +13,10 @@ const TestimonialsSection: React.FC = memo(() => {
             Lo que Dicen Nuestros Clientes
           </h2>
         </div>
+      )}
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Testimonials Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.id}
@@ -46,8 +45,14 @@ const TestimonialsSection: React.FC = memo(() => {
             </div>
           ))}
         </div>
+    </>
+  )
 
-      </div>
+  if (embedded) return content
+
+  return (
+    <section className="py-24 bg-[#0d0b08] border-t border-[#c4943a]/20 relative cvis">
+      <div className="max-w-7xl mx-auto px-6">{content}</div>
     </section>
   )
 })

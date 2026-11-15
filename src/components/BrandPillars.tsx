@@ -206,7 +206,7 @@ const BrandPillars: React.FC = memo(() => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[var(--ink)] border-y border-[rgba(var(--gold-rgb),0.2)] py-20 lg:py-24 overflow-hidden"
+      className="relative w-full bg-[var(--ink)] border-y border-[rgba(var(--gold-rgb),0.2)] py-10 lg:py-12 overflow-hidden"
     >
       {/* Resplandor ambiental de fondo */}
       <div

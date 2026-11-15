@@ -25,6 +25,7 @@ interface DiagnosticResult {
 }
 
 interface AiVisagismoModalProps {
+  embedded?: boolean
   initialStyleId?: HairId
   onBookWithStyle: (style: HairStyle) => void
   onAddToCart?: (product: HairProduct) => void
@@ -32,6 +33,7 @@ interface AiVisagismoModalProps {
 }
 
 const AiVisagismoModal: React.FC<AiVisagismoModalProps> = memo(({
+  embedded = false,
   initialStyleId = 'pompadour',
   onBookWithStyle,
   onAddToCart,
@@ -206,11 +208,9 @@ const AiVisagismoModal: React.FC<AiVisagismoModalProps> = memo(({
     }
   }
 
-  return (
-    <section id="visagismo" className="py-24 bg-[#110e0b] border-t border-[#d4af67]/20 relative">
-      <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        
-        {/* HEADER */}
+  const content = (
+    <>
+      {!embedded && (
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#1c1712] border border-[#d4af67]/35 text-xs font-black text-[#d4af67] uppercase tracking-widest mb-3">
             <AiDiagnosticIcon size={16} />
@@ -223,8 +223,9 @@ const AiVisagismoModal: React.FC<AiVisagismoModalProps> = memo(({
             Alinea tu rostro con el visor biométrico para calibrar el análisis facial antropométrico y recibir la recomendación precisa de corte y cosmética capilar.
           </p>
         </div>
+      )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start">
           
           {/* LEFT: CALIBRATION & SCANNING WORKSPACE */}
           <div className="lg:col-span-6 bg-[#16120e] p-7 rounded-2xl border border-[#d4af67]/30 flex flex-col items-center shadow-2xl">
@@ -670,8 +671,14 @@ const AiVisagismoModal: React.FC<AiVisagismoModalProps> = memo(({
           </div>
 
         </div>
+    </>
+  )
 
-      </div>
+  if (embedded) return content
+
+  return (
+    <section id="visagismo" className="py-24 bg-[#110e0b] border-t border-[#d4af67]/20 relative">
+      <div className="w-full max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{content}</div>
     </section>
   )
 })
