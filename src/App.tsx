@@ -14,7 +14,7 @@ import AdminPanel from './components/AdminPanel'
 import CustomScrollbar from './components/CustomScrollbar'
 
 // Custom Icons
-import { LuxuryBagIcon, CalendarClockIcon } from './components/icons/CustomIcons'
+import { LuxuryBagIcon, CalendarClockIcon, ScissorsIcon, AiDiagnosticIcon, PomadePotIcon } from './components/icons/CustomIcons'
 
 // Types & Hooks & Data & DB
 import { HairStyle, Service, HairProduct, CartItem, Reservation, Toast, HairId } from './types'
@@ -239,29 +239,71 @@ export default function App() {
       {/* Toast Notifications System */}
       <ToastNotification toasts={toasts} onRemove={removeToast} />
 
-      {/* Sticky Mobile CTA Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070605]/95 backdrop-blur-md border-t border-[#d4af67]/40 p-3 bottom-cta-safe flex items-center gap-2 shadow-2xl">
-        <button
-          type="button"
-          onClick={() => setIsCartOpen(true)}
-          className="relative px-4 py-3 bg-[#14110d] border border-[#d4af67]/40 text-[#f5ebd7] font-bold text-xs rounded-lg flex items-center justify-center gap-1 cursor-pointer"
-        >
-          <LuxuryBagIcon size={18} />
-          {cartCount > 0 && (
-            <span className="bg-[#d4af67] text-[#0b0a08] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
-              {cartCount}
-            </span>
-          )}
-        </button>
-        <button
-          type="button"
-          onClick={() => handleNavigate('booking')}
-          className="flex-1 py-3 bg-[#d4af67] hover:bg-[#e8c98b] text-[#0b0a08] font-black text-xs uppercase tracking-wider rounded-lg text-center shadow-lg cursor-pointer flex items-center justify-center gap-2"
-        >
-          <CalendarClockIcon size={16} />
-          <span>RESERVAR TURNO ONLINE</span>
-        </button>
-      </div>
+      {/* Mobile Only Ergonomic Bottom Dock (< md) — Minimalista, bien espaciado, sin superponerse */}
+      <nav
+        aria-label="Navegación rápida móvil de Pelu Rosario"
+        className="md:hidden fixed bottom-3 inset-x-3 z-40 select-none pb-[env(safe-area-inset-bottom)]"
+      >
+        <div className="mx-auto max-w-md rounded-2xl border border-[#d4af67]/40 bg-[#070605]/95 backdrop-blur-2xl shadow-[0_14px_36px_rgba(0,0,0,0.75)] p-1.5 grid grid-cols-5 items-center gap-1">
+          <button
+            type="button"
+            onClick={() => handleNavigate('catalog')}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition-all cursor-pointer ${
+              experienceTab === 'catalog' ? 'bg-[#d4af67]/15 text-[#d4af67]' : 'text-[#b8a994]'
+            }`}
+          >
+            <ScissorsIcon size={16} />
+            <span className="text-[10px] font-bold mt-1 leading-none">Cortes</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNavigate('visagismo')}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition-all cursor-pointer ${
+              experienceTab === 'visagismo' ? 'bg-[#d4af67]/15 text-[#d4af67]' : 'text-[#b8a994]'
+            }`}
+          >
+            <AiDiagnosticIcon size={16} />
+            <span className="text-[10px] font-bold mt-1 leading-none">IA Capilar</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNavigate('booking')}
+            className="flex flex-col items-center justify-center py-1.5 rounded-xl bg-[#d4af67] text-[#0b0a08] font-black shadow-md active:scale-95 transition-all cursor-pointer"
+          >
+            <CalendarClockIcon size={16} />
+            <span className="text-[10px] font-black mt-1 leading-none">Reservar</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNavigate('products')}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition-all cursor-pointer ${
+              experienceTab === 'products' ? 'bg-[#d4af67]/15 text-[#d4af67]' : 'text-[#b8a994]'
+            }`}
+          >
+            <PomadePotIcon size={16} />
+            <span className="text-[10px] font-bold mt-1 leading-none">Boutique</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsCartOpen(true)}
+            className="relative flex flex-col items-center justify-center py-1.5 rounded-xl text-[#f5ebd7] active:scale-95 transition-all cursor-pointer"
+          >
+            <div className="relative flex items-center gap-0.5">
+              <LuxuryBagIcon size={16} />
+              {cartCount > 0 && (
+                <span className="bg-[#d4af67] text-[#0b0a08] text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] font-bold mt-1 leading-none">Bolsa</span>
+          </button>
+        </div>
+      </nav>
 
     </div>
   )

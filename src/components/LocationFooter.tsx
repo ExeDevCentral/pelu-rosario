@@ -3,7 +3,7 @@ import { HeraldicOwlIcon } from './icons/CustomIcons'
 
 const LocationFooter: React.FC = memo(() => {
   return (
-    <footer className="bg-[#070605] border-t border-[#d4af67]/30 pt-16 pb-12 text-[#f5ebd7]/80">
+    <footer className="bg-[#070605] border-t border-[#d4af67]/30 pt-16 pb-28 md:pb-12 text-[#f5ebd7]/80">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
         
         {/* Col 1: Brand Info */}
